@@ -2,6 +2,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const { Square } = require('./lib/shapes');
+const { Triangle} = require('./lib/shapes');
+const { Circle } = require('./lib/shapes');
 
 inquirer
   .prompt([
@@ -32,13 +34,18 @@ inquirer
    if (response.shape === 'Square'){
     shape = new Square(response.textColor, response.shapeColor, response.text)
    }
+   if (response.shape === 'Triangle'){
+    shape = new Triangle(response.textColor, response.shapeColor, response.text)
+   }
+   if (response.shape === 'Circle'){
+    shape = new Circle(response.textColor, response.shapeColor, response.text)
+   }
 
     fs.writeFile('shape.svg', shape.render(), (err) => {
       if(err) {
         console.log('There was an error: ' + err);
       } else {
     
-
       }
     })
   });
