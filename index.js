@@ -1,34 +1,44 @@
 // Runs the application using imports from lib/
 const inquirer = require('inquirer');
 const fs = require('fs');
-const shapes = require('/lib/shapes.js')
+const { Square } = require('./lib/shapes');
 
 inquirer
   .prompt([
     {
-      type: 'input',
-      message: 'Enter the title of your project:',
-      name: 'title',
+      type: 'list',
+      message: 'Select a Shape',
+      name: 'shape',
+      choices: ['Triangle', 'Circle', 'Square']
     },
     {
       type: 'input',
-      message: 'Enter a description:',
-      name: 'description',
+      message: 'Select a Color for the shape',
+      name: 'shapeColor',
     },
     {
       type: 'input',
-      message: 'Enter Installation requirements:',
-      name: 'install',
+      message: 'Enter text for logo',
+      name: 'text',
+    },
+    {
+      type: 'input',
+      message: 'Select a color for the text',
+      name: 'textColor',
     },
   ])
-//   .then((response) => {
-   
-//     fs.writeFile('svg',JSON.stringify(response, null, '\t'), (err) => {
-//       if(err) {
-//         console.log('There was an error: ' + err);
-//       } else {
+  .then((response) => {
+    let shape;
+   if (response.shape === 'Square'){
+    shape = new Square(response.textColor, response.shapeColor, response.text)
+   }
+
+    fs.writeFile('shape.svg', shape.render(), (err) => {
+      if(err) {
+        console.log('There was an error: ' + err);
+      } else {
     
 
-//       }
-//     })
-//   });
+      }
+    })
+  });
