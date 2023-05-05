@@ -29,3 +29,15 @@ THEN I am shown a 300x200 pixel image that matches the criteria I entered
 ```
 
 <!-- App description, link to video, setup and usage  -->
+## Installation
+Requires Node.js, Inquirer, and Jest
+
+## Usage
+This is a Command Line Application. When the user opens the terminal and types, 'node index.js', a series of prompts will have the user select a shape, input text, and choose colors for the shape and text. Once all of the prompts have been answered, a shape.svg file is generated with the user input.
+
+
+
+## Credits
+Worked on with Tutor: Eric Sayer
+
+https://www.w3schools.com/graphics/svg_intro.asp
